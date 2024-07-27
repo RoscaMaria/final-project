@@ -6,9 +6,12 @@ const useFetch = (url) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    let isMounted = true;
     const fetchData = async () => {
       try {
-        const response = await fetch(url);
+        const response = await fetch(url , {
+            method: "GET",
+          });
         if (!response.ok) {
           throw new Error(`Error: ${response.statusText}`);
         }
