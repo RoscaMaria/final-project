@@ -10,7 +10,7 @@ export default function RecipeCard(props) {
   const { title, image, recipeId, recipe } = props;
   const {state: dashboardState, dispatch: dashboardDispatch} = useContext(DashboardContext);
 
-  console.log("dashoard", dashboardDispatch);
+  
 
   const handleAddToDashboard = (recipe) => {
     dashboardDispatch(addToFavDashboard(recipe));

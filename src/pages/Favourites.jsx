@@ -6,7 +6,7 @@ export default function Favourites() {
     useContext(DashboardContext);
 
   
-  console.log("dashboardDispatch", dashboardDispatch);
+  console.log("dashboard state", dashboardState);
 
   if (!dashboardState || !dashboardState.recipes) {
     return <p>Loading...</p>;
@@ -19,8 +19,8 @@ export default function Favourites() {
         <p>You have no favourites</p>
       ) : (
         <ul>
-          {dashboardState.recipes.map((recipe, index) => {
-            return <li key={recipe.idMeal}> {recipe.strMeal} </li>;
+          {dashboardState.recipes.map((recipe) => {
+            return <li   key={recipe.idMeal}  > {recipe.strMeal} </li>;
           })}
         </ul>
       )}

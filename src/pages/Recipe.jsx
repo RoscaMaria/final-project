@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Spinner, Container, Row, Col, Image } from "react-bootstrap";
 
+import "./Recipe.css";
+
 import { style } from "react-bootstrap";
 
 import useFetch from "../hooks/useFetch";
@@ -46,24 +48,28 @@ function Recipe() {
 
     <Container>
       <Row>
-        <h1>{recipe.strMeal}</h1>
-        <Col sm={5}>
-        <Image src={recipe.strMealThumb} style={{width: '100%'}} rounded />
+        <Col>
+        <h1 style={{}}>{recipe.strMeal}</h1>
+        <Image src={recipe.strMealThumb} style={{width: '100%'}} rounded  className="recipeImage"/>
         </Col>
-        <Col sm={6}>
-        <h3> Ingredients</h3>
+        </Row>
+      <Row>
+        
+        <Col sm={5}>
+        <h2>Ingredients</h2>
         {
           ingredients.map((ingredient, index) => (
             <p>{ingredient}</p>
           ))
         }
+  
         </Col>
-      </Row>
-      <Row>
         <Col>
+        <h2>Steps</h2>
         <p>{recipe.strInstructions}</p>
         </Col>
-        </Row>
+      </Row>
+     
     </Container>
   
 
