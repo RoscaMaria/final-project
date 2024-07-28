@@ -15,7 +15,7 @@ export const dashboardReducer = (state, action) => {
     case REMOVE_FROM_FAV:
       return {
         ...state,
-        recipes: state.recipes.filter((recipe) => recipe !== action.payload),
+        recipes: state.recipes.filter(({ idMeal }) => idMeal !== action.payload.idMeal),
       };
 
     default:
