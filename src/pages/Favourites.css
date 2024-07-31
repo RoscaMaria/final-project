@@ -1,0 +1,24 @@
+
+.favourites {
+  margin-top: 150px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.fav-recipes {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-left: 500px;
+}
+
+.card-body2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin-top: 100px;
+}

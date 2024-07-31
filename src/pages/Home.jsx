@@ -1,76 +1,54 @@
 import React, { useContext, useEffect, useReducer, useState } from "react";
-import { Col, Container, Row, Spinner, Card, Button } from "react-bootstrap";
-import { DashboardContext } from "../store/Favourites/context";
-import {
-  addToFavDashboard,
-  removeFromFavDashboard,
-} from "../store/Favourites/actions";
-import { Link } from "react-router-dom";
+import { Container, Row, Spinner, Col } from "react-bootstrap";
+
+import videoFile from "../assets/videos/backdrop.mp4";
 
 import RecipeCard from "../components/RecipeCard";
 
 import useFetch from "../hooks/useFetch";
 
+import "../pages/Home.css";
+
 function Home() {
   const { data, loading, error } = useFetch(
     "https://www.themealdb.com/api/json/v1/1/filter.php?c=Dessert"
   );
-  const { state: dashboardState, dispatch: dashboardDispatch } =
-    useContext(DashboardContext);
 
-  const handleAddToDashboard = (recipe) => {
-    dashboardDispatch(addToFavDashboard(recipe));
-  };
-
-  const handleRemoveFromDashboard = (recipe) => {
-    dashboardDispatch(removeFromFavDashboard(recipe));
-  };
-
-  const isRecipeInDashboard = (recipe) => {
-    return dashboardState.recipes.some((r) => r.idMeal === recipe.idMeal);
-  };
   if (loading) return <Spinner />;
 
   if (error) return <div>Error: {error.message}</div>;
 
   return (
-    <Container>
-      <div>
-        <h1>Recipes</h1>
-      </div>
+    <>
+    <Container className="container-video">
+      <Row className="header">
+        <video className="backdrop-video" controls loop autoPlay muted>
+          
+          <source src={videoFile} type="video/mp4"></source>
+        </video>
+      </Row>
+      </Container>
+      <Container>
 
-      <Row>
+      <Row className="latest-rceipes" style={{marginBottom: "50"}}>
+        <h2> LATEST RECIPES</h2>
+        <p>Here's some of the latest recipes that can staisfy your sweet tooth! Find your favourite and share (or don't) with your friends.</p>
+      </Row>
+
+      <Row className="container2" >
+        
         {data &&
           data.meals.map((recipe, index) => (
-            <Card style={{ width: "400px", mb: "4px" }}>
-              <Card.Img variant="top" src={recipe.strMealThumb} alt="/" />
-              <Card.Body>
-                <Card.Title>{recipe.strMeal}</Card.Title>
-                <Link to={`recipe/${recipe.idMeal}`} className="button-link">
-                  Go to Recipe
-                </Link>
-
-                <Button
-                  variant="light"
-                  onClick={() => {
-                    if (isRecipeInDashboard(recipe))
-                      handleRemoveFromDashboard(recipe);
-                    else handleAddToDashboard(recipe);
-                  }}
-                >
-                  {isRecipeInDashboard(recipe) ? (
-                    <span className="material-symbols-outlined">
-                      heart_check
-                    </span>
-                  ) : (
-                    <span className="material-symbols-outlined">favorite</span>
-                  )}
-                </Button>
-              </Card.Body>
-            </Card>
+            <Col >
+              <RecipeCard key={index} {...recipe} />
+            </Col>
+            
           ))}
+        
+        
       </Row>
     </Container>
+    </>
   );
 }
 

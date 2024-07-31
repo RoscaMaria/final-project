@@ -10,23 +10,25 @@ import { Route, Routes } from "react-router-dom";
 import GroceryList from "./pages/GroceryList";
 import Favourites from "./pages/Favourites";
 import { DashboardProvider } from "./store/Favourites/context";
+import { ListProvider } from "./store/GroceryList/context";
 
 function App() {
   return (
-  
-      <DashboardProvider>
+    <DashboardProvider>
+      <ListProvider>
         <Layout>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/favourites" element={<Favourites />} />
             <Route path="/grocery-list" element={<GroceryList />} />
             <Route path="/recipe/:recipeId" element={<Recipe />} />
+            <Route path="/favourites/recipe/:recipeId" element={<Recipe />} />
 
             <Route path="*" element={<Page404 />} />
           </Routes>
         </Layout>
-      </DashboardProvider>
-   
+      </ListProvider>
+    </DashboardProvider>
   );
 }
 
