@@ -30,7 +30,7 @@ function Home() {
       </Container>
       <Container>
 
-      <Row className="latest-rceipes" style={{marginBottom: "50"}}>
+      <Row className="latest-rceipes" style={{marginBottom: "50px"}}>
         <h2> LATEST RECIPES</h2>
         <p>Here's some of the latest recipes that can staisfy your sweet tooth! Find your favourite and share (or don't) with your friends.</p>
       </Row>

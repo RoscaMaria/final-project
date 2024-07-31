@@ -11,7 +11,7 @@ function Header() {
 
   return (
     <header className="mb-4">
-      <Navbar className={styles.navbar} bg="transparent">
+      <Navbar expand="md" className={styles.navbar} bg="transparent">
         <Navbar.Brand as={Link} to="/">
           Chef Up!
         </Navbar.Brand>

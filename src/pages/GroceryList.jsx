@@ -1,45 +1,35 @@
 import React from "react";
 import { ListContext } from "../store/GroceryList/context";
 import { useContext } from "react";
-import { addToList, removeFromList } from "../store/GroceryList/actions";
+import { Container, Row } from "react-bootstrap";
 
-export default function GroceryListPage () {
-    const {state: listState, dispatch: listDispatch} = useContext(ListContext);
-    return (
-        <>
-        <p>grocery list page</p>
+import "../pages/GroceryList.css"
+
+
+export default function GroceryListPage() {
+  const { state: listState, dispatch: listDispatch } = useContext(ListContext);
+  return (
+    <Container style={{width: "300px"}}>
+      <Row>
+        <h3 style={{marginBottom: "60px", marginTop: "60px"}}>Grocery list</h3>
+      </Row>
+      <Row>
         {listState.ingredients.length === 0 ? (
-            <h3>No ingredients added to the grocery list!</h3>
+          <h3>No ingredients added to the grocery list!</h3>
         ) : (
-        <div>
+          <span className="grocery-list">
+            <p>To prepare the chosen recipes you still need some things</p>
+            <p>Be sure to add to your cart the following:</p>
             {listState.ingredients.map((ingredient, index) => (
-                <>
-        
-                <li key={index} style={{listStyle: 'none'}}>
-            <label for="ingredient-checkbox">
-              <input
-                id="ingredient-checkbox"
-                type="checkbox"
-                checked={listState.ingredients.includes(ingredient)}
-                onChange={() => {
-                  if(listState.ingredients.includes(ingredient)){
-                    listDispatch(removeFromList(ingredient));
-                    return;
-                  } listDispatch(addToList(ingredient));
-                }
-               } 
-              />
-              {ingredient}
-            </label>
-          </li>
-
-                </>
+              <div >
+                <li key={index} style={{ listStyle: "none" }}>
+                  {ingredient}
+                </li>
+              </div>
             ))}
-            <p> huraay you added ingredients!</p>
-            </div>
-            
+          </span>
         )}
-        </>
-        
-    );
+      </Row>
+    </Container>
+  );
 }

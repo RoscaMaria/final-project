@@ -57,10 +57,10 @@ function Recipe() {
         <Image src={recipe.strMealThumb} style={{width: '100%', marginBottom: '100px', marginTop: '50px'} } rounded  className="recipeImage"/>
         </Col>
         </Row>
-      <Row>
+      <Row className="recipe-instructions" style={{marginBottom: '50px'}}>
         
         <Col sm={5}>
-        <h2>Ingredients</h2>
+        <h2 style={{borderBottom: "2px solid black"}}>Ingredients</h2>
         {
           ingredients.map((ingredient, index) => (
             <li key={index} style={{listStyle: 'none'}}>
@@ -85,7 +85,7 @@ function Recipe() {
   
         </Col>
         <Col>
-        <h2>Steps</h2>
+        <h2 style={{borderBottom: "2px solid black"}}>Steps</h2>
         <p>{recipe.strInstructions}</p>
         </Col>
       </Row>
