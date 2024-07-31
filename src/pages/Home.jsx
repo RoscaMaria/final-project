@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useReducer, useState } from "react";
+import React from "react";
 import { Container, Row, Spinner, Col } from "react-bootstrap";
 
 import videoFile from "../assets/videos/backdrop.mp4";

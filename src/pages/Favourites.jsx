@@ -8,7 +8,7 @@ import "../pages/Favourites.css"
 
 
 export default function Favourites() {
-  const { state: dashboardState, dispatch: dashboardDispatch } =
+  const { state: dashboardState } =
     useContext(DashboardContext);
 
   console.log("dashboard state", dashboardState);

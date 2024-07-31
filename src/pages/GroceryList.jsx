@@ -7,7 +7,7 @@ import "../pages/GroceryList.css"
 
 
 export default function GroceryListPage() {
-  const { state: listState, dispatch: listDispatch } = useContext(ListContext);
+  const { state: listState } = useContext(ListContext);
   return (
     <Container style={{width: "300px"}}>
       <Row>
